@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{titleName}} Item</title>
+</head>
+<body>
+    <h1>{{titleName}} Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table class="table">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" required value="{{item.name}}"></td>
+            </tr>
+            <!-- <tr>
+                <td>IIN (Unique):</td>
+                <td><input type="text" name="iin" required value="{{item.iin}}"></td>
+            </tr> -->
+            <tr>
+                <td>Cost:</td>
+                <td><input type="number" name="cost" step="0.01" min="0.01" required value="{{item.cost}}"></td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td><input type="number" name="quantity" min="1" required value="{{item.quantity}}"></td>
+            </tr>
+            <tr>
+                <td>Selling Price:</td>
+                <td><input type="number" name="selling_price" step="0.01" min="0.01" required value="{{item.selling_price}}"></td>
+            </tr>
+        </table>
+        <input class="btn btn-success m-2" type="submit" value="Create">
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Orders Received for {{ item.name }}</h2>
+<table class="table">
+    <thead class="col">
+        <tr>
+            <th>Order ID</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Order Date & Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.cost }}</td>
+            <td>{{ order.orderdttm }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
