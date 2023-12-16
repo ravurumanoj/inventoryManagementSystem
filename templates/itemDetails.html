@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item Details: {{ item.name }}</title>
+</head>
+<body>
+    <h1>Item Details: {{ item.name }}</h1>
+    <table class="table">
+        <tr>
+            <td>Item ID:</td>
+            <td>{{ item.id }}</td>
+        </tr>
+        <tr>
+            <td>Cost:</td>
+            <td>{{ item.cost }}</td>
+        </tr>
+        <tr>
+            <td>Quantity in Stock:</td>
+            <td>{{ item.quantity }}</td>
+        </tr>
+        <tr>
+            <td>Quantity Sold:</td>
+            <td>{{ item.quantity_sold }}</td>
+        </tr>
+        <tr>
+            <td>Selling Price:</td>
+            <td>{{ item.selling_price }}</td>
+        </tr>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}           
+        <div id="order_quantity_div">
+            <h3>Order More Quantity</h3>
+            <!-- <label for="new_quantity">Enter new quantity:</label> -->
+            <input type="number" name="new_quantity" id="new_quantity" min="1">
+        </div>
+        <input class="btn btn-success m-1" type="submit" value="Submit">
+    </form>
+
+    <a class="btn btn-info m-1" href="{% url 'edit_item' item.id %}">Edit Item</a>
+    <a class="btn btn-info m-1" href="{% url 'orders_placed' item.id %}">View Orders</a>
+    <a class="btn btn-info m-1" href="{% url 'item_transactions' item.id %}">View Transactions</a>
+    <a class="btn btn-info m-1" href="{% url 'orders_received' item.id %}">Received Orders</a>
+    <a class="btn btn-info m-1" href="{% url 'orders_canceled' item.id %}">Cancelled Orders</a>
+</body>
+</html>
+{% endblock %}

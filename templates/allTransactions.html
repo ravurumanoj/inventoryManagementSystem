@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table">
+    <thead class="col">
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Selling Price</th>
+            <th>Transaction Date & Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in items %}
+        <tr>
+            <td>{{ transaction.item_id }}</td>
+            <td>{{ transaction.name }}</td>
+            <td>{{ transaction.quantity }}</td>
+            <td>{{ transaction.selling_price }}</td>
+            <td>{{ transaction.transactiondttm }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

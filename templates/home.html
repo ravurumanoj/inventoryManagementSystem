@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Store Statistics</h1>
+    <table class="table">
+        <!-- <tr>
+            <a class="btn btn-info m-3" href="{% url 'itemList' %}" role="button">Item List</a>
+            <a class="btn btn-info m-3" href="{% url 'createItem' %}" role="button">Create Item</a>
+        </tr> -->
+        <tr>
+            <td>Total Store Profit:</td>
+            <td>{{ totalProfit }}</td>
+        </tr>
+        <tr>
+            <td>Total Items in Stock:</td>
+            <td>{{ totalItemsStock }}</td>
+        </tr>
+        <tr>
+            <td>Item with highest cost:</td>
+            <td>{{ highestCostItem }}</td>
+        </tr>
+        <tr>
+            <td>Item with highest profits:</td>
+            <td>{{ highestProfitsItem }}</td>
+        </tr>
+        <tr>
+            <td>Item most sold:</td>
+            <td> {{ mostSoldItem }}</td>
+        </tr>
+        <tr>
+            <td>Items out of stock:</td>
+            {% for i in outOfStock %}
+            <td>{{i}}</td>
+            {% endfor %}
+        </tr>
+        <!-- <tr>
+            <td>Item with highest profit earned:</td>
+            <td>{{ highestProfitItem }}</td>
+        </tr> -->
+        
+    </table>
+</body>
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item List</title>
+</head>
+<body>
+    <h1>Item List</h1>
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Quantity in Stock</th>
+            <th scope="col">Actions</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.cost }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+                <a class="btn btn-dark m-1" href="{% url 'edit_item' item.id %}">Edit Item</a>
+                <a class="btn btn-dark m-1" href="{% url 'sellItem' item.id %}">Sell</a>
+                <a class="btn btn-dark m-1" href="{% url 'itemDetails' item.id %}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class="btn btn-success m-2" href="{% url 'createItem' %}">Add Item</a>
+</body>
+</html>
+{% endblock %}
